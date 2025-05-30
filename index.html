@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Документ</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="logo"><a class="img4" href="http://127.0.0.1:3002/index.html"></a><img src="./Group 2.svg" alt="" /></div>
+            <div class="nav-links">
+                <a href="#Account">Аккаунт</a>
+                <a href="#">Социальные сети</a>
+                <a href="https://danil-del.github.io/dogpageEN/"><button class="btnlang">RUS</button></a>
+            </div>
+            <nav class="navbar">
+                <button class="burger" id="burger" aria-label="Открыть меню">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                </button>
+
+                <ul class="nav-links2" id="nav-links">
+                    <li><a href="#">Избранное</a></li>
+                    <li><a href="#About us">О нас</a></li>
+                    <li><a href="#Donate">Пожертвования</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section class="card scroll-reveal">
+            <div class="card">
+                <div class="photo">
+                    <img class="cat" src="./7d750e20a3bea07f20a2837aba892f48.jpg" alt="Фото собаки по имени Бони" />
+                    <img class="vector" src="./Vector 6.svg" alt="" />
+                </div>
+                <div class="text-box">
+                    <div class="title-wrapper">
+                        <h1 class="title">Пёс Бони</h1>
+                        <button class="favorite-btn" onclick="toggleFavorite(this)">
+                            ❤️
+                        </button>
+                    </div>
+                    <p class="description">
+                        Бони — дружелюбный и энергичный пес, который ищет любящий дом. Он любит играть на улице и быстро находит общий язык с детьми и другими животными. Идеальный компаньон для активной семьи!
+                    </p>
+
+                    <button class="btn">Забронировать</button>
+                </div>
+            </div>
+        </section>
+        <section class="benefits scroll-reveal">
+            <h2 class="title2">Мы заботимся об их здоровье</h2>
+            <p class="small">
+                Мы гордимся тем, что заботимся о каждом животном в нашем приюте. Все наши пушистые друзья проходят регулярные медицинские осмотры, получают правильное питание и много любви. Наша команда усердно работает, чтобы каждый питомец был здоровым, счастливым и готовым найти свой постоянный дом.
+            </p>
+            <img class="vector2" src="./Vector 6.svg" alt="" />
+            <div class="sqs">
+                <div class="sq dark"><img class="hair" src="./pet-food.png" alt=""></div>
+                <div class="sq light"><img class="hair" src="./syringe.png" alt=""></div>
+                <div class="sq dark"><img  class="hair" src="./hairbrush.png" alt=""></div>
+            </div>
+        </section>
+
+        <section class="social-media scroll-reveal">
+            <h3 class="textt">Наши социальные сети:</h3>
+            <div class="socialbox">
+                <a href="https://vk.com/zoozashita_ru"><img src="./icons8-vk.svg" class="wk" alt=""></a>
+                <img src="./icons8-телеграм (1).svg" class="tg" alt="">
+            </div>
+            <div class="contacts">
+                <h3 class="hc-1">Наши контакты:</h3>
+                <a class="hc" href="tel:+73832149291">+73832149291</a>
+            </div>
+        </section>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const scrollElements = document.querySelectorAll(".scroll-reveal");
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("active");
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.1,
+                });
+
+                scrollElements.forEach((el) => observer.observe(el));
+            });
+            const burger = document.getElementById("burger");
+            const navLinks = document.getElementById("nav-links");
+
+            burger.addEventListener("click", () => {
+                burger.classList.toggle("active");
+                navLinks.classList.toggle("active");
+                document.body.classList.toggle("menu-open");
+            });
+            document.querySelectorAll("#nav-links a").forEach((link) => {
+                link.addEventListener("click", () => {
+                    document.getElementById("nav-links").classList.remove("active");
+                    document.getElementById("burger").classList.remove("active");
+                    document.body.classList.remove("menu-open");
+                });
+            });
+            function toggleFavorite(button) {
+                const isFavorite = button.classList.toggle("active");
+                button.textContent = isFavorite ? "💖" : "❤️";
+
+                if (isFavorite) {
+                    alert("Добавлено в избранное!");
+                } else {
+                    alert("Удалено из избранного.");
+                }
+            }
+        </script>
+    </div>
+</body>
+
+</html>
